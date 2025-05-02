@@ -1,5 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const mathRoutes = require('./routes/mathRoutes');
+
+// Allow requests from localhost:3000 (and optionally others)
+app.use(cors({
+  origin: ['http://localhost:3000'], // Add your Next.js app's origin
+}));
 
 const app = express();
 const port = 3000;
