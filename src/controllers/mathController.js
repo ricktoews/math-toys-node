@@ -11,7 +11,7 @@ const mathController = {
 
         const result = decimalLogic.getSingleExpansion(1, denominator);
 
-        res.json({ result });
+        res.json({ description: `Get the reciprocal of ${denominator}.`, data: result });
     },
 
     handleDc: (req, res) => {
@@ -20,7 +20,7 @@ const mathController = {
             return res.status(400).json({ error: 'Valid non-zero denominator required' });
         }
         const result = mathUtils.getExpansions(denominator);
-        res.json({ result });
+        res.json({ description: `Get the decimal expansions for denominator ${denominator}.`, data: result });
     },
 
     pythagorean: (req, res) => {
@@ -29,7 +29,7 @@ const mathController = {
             return res.status(400).json({ error: 'Valid positive corner length required' });
         }
         const result = mathUtils.pythagorean(corner); // Assume other side = 1
-        res.json({ result });
+        res.json({ description: `Get pythagorean triples where c minus b is ${corner}.`, data: result });
     },
 
     phiPowers: (req, res) => {
@@ -38,7 +38,7 @@ const mathController = {
             return res.status(400).json({ error: 'Valid non-negative powers required' });
         }
         const result = phiLogic.getPhi(powers);
-        res.json({ result });
+        res.json({ description: `Get phi powers from 1 to ${powers}.`, data: result });
     }
 };
 
