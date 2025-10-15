@@ -1,6 +1,7 @@
 const mathUtils = require('../utils/mathUtils');
 const decimalLogic = require('../utils/decimalLogic');
 const phiLogic = require('../utils/phiLogic');
+const calendarLogic = require('../utils/calendarLogic');
 
 const mathController = {
     handleRecip: (req, res) => {
@@ -68,6 +69,12 @@ const mathController = {
         }
         const result = dbl(BigInt(nth))[0];
         res.json({ description: `Fibonacci number ${nth}`, data: result.toString() })
+    },
+
+    calendar: (req, res) => {
+        const year = parseInt(req.params.year, 10);
+        const year12Digit = calendarLogic.calc12DigitYear(year).join('');
+        res.json({ description: `Calendar for ${year}`, data: year12Digit });
     }
 };
 

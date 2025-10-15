@@ -9,5 +9,6 @@ router.get('/pythag/:corner', mathController.pythagorean);
 router.get('/phi/:powers', mathController.phiPowers);
 router.get('/fib/:howmany', mathController.fibonacci);
 router.get('/nthfib/:nth', mathController.nthFibonacci);
+router.get('/calendar/:year', mathController.calendar);
 
 module.exports = router;
