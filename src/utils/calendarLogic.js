@@ -15,7 +15,7 @@ const isLeap = year => {
 const calcJan = year => {
     const centuryNum = Math.floor(year / 100);
     const centuryOffsetNdx = centuryNum % 4;
-    const centuryOffset = year >= 1600 ? centuryOffsets[centuryOffsetNdx] : 19 - centuryNum;
+    const centuryOffset = year >= 1583 ? centuryOffsets[centuryOffsetNdx] : 19 - centuryNum;
 
     let yearOffset, leapYears, jan;
     if (year !== 1582) {
