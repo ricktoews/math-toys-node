@@ -75,7 +75,14 @@ const mathController = {
         const year = parseInt(req.params.year, 10);
         const year12Digit = calendarLogic.calc12DigitYear(year).join('');
         res.json({ description: `Calendar for ${year}`, data: year12Digit });
+    },
+
+    century: (req, res) => {
+        const cent = parseInt(req.params.cent, 10);
+        const century = calendarLogic.century(cent);
+        res.json({ description: `Calendars for century ${cent}`, data: century });
     }
+
 };
 
 module.exports = mathController;

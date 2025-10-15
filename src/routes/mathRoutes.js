@@ -10,5 +10,6 @@ router.get('/phi/:powers', mathController.phiPowers);
 router.get('/fib/:howmany', mathController.fibonacci);
 router.get('/nthfib/:nth', mathController.nthFibonacci);
 router.get('/calendar/:year', mathController.calendar);
+router.get('/century/:cent', mathController.century);
 
 module.exports = router;

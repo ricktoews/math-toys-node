@@ -33,11 +33,23 @@ const calcJan = year => {
 }
 
 const calc12DigitYear = year => {
-    var jan = calcJan(year);
-    var yearDigits = [];
-    var template = isLeap(year) ? leapTemplate : yearTemplate;
+    const jan = calcJan(year);
+    let yearDigits = [];
+    const template = isLeap(year) ? leapTemplate : yearTemplate;
     yearDigits = template.map(d => (d + jan) % 7);
+    if (year === 1582) {
+        yearDigits = [1, 4, 4, 0, 2, 5, 0, 3, 6, '[1/5]', 1, 3];
+    }
     return yearDigits;
+}
+
+const century = c => {
+    let year = (c - 1) * 100;
+    let calendars = {};
+    while (year < c * 100) {
+        calendars[year.toString()] = calc12DigitYear(year++).join('');
+    }
+    return calendars;
 }
 
 const generateMonthData = ({ year, janDigit, isLeap }) => {
@@ -53,7 +65,8 @@ const generateMonthData = ({ year, janDigit, isLeap }) => {
 }
 
 const calendarLogic = {
-    calc12DigitYear
+    calc12DigitYear,
+    century
 };
 
 module.exports = calendarLogic;
