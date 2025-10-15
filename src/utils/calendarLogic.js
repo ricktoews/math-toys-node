@@ -32,7 +32,7 @@ const calcJan = year => {
     return jan;
 }
 
-export const calc12DigitYear = year => {
+const calc12DigitYear = year => {
     var jan = calcJan(year);
     var yearDigits = [];
     var template = isLeap(year) ? leapTemplate : yearTemplate;
@@ -40,7 +40,7 @@ export const calc12DigitYear = year => {
     return yearDigits;
 }
 
-export const generateMonthData = ({ year, janDigit, isLeap }) => {
+const generateMonthData = ({ year, janDigit, isLeap }) => {
     var template = isLeap ? leapTemplate : yearTemplate;
     var data = [];
     template.forEach((digit, monthNdx) => {
@@ -52,4 +52,8 @@ export const generateMonthData = ({ year, janDigit, isLeap }) => {
     return data;
 }
 
+const calendarLogic = {
+    calc12DigitYear
+};
 
+module.exports = calendarLogic;
