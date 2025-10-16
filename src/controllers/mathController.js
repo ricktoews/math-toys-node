@@ -2,6 +2,7 @@ const mathUtils = require('../utils/mathUtils');
 const decimalLogic = require('../utils/decimalLogic');
 const phiLogic = require('../utils/phiLogic');
 const calendarLogic = require('../utils/calendarLogic');
+const primes = require('../utils/primes');
 
 const mathController = {
     handleRecip: (req, res) => {
@@ -81,6 +82,43 @@ const mathController = {
         const cent = parseInt(req.params.cent, 10);
         const century = calendarLogic.century(cent);
         res.json({ description: `Calendars for century ${cent}`, data: century });
+    },
+
+    triangular: (req, res) => {
+        const limit = parseInt(req.params.limit, 10) || 100;
+        const result = [];
+        for (let i = 1; i <= limit; i++) {
+            const tri = i * (i + 1) / 2;
+            const sqrt = Math.sqrt(tri);
+            const isSquare = sqrt == parseInt(sqrt, 10);
+            result.push({ n: i, tri, isSquare });
+        }
+        res.json({ description: `First ${limit} triangular numbers`, data: result });
+    },
+
+    triSquare: (req, res) => {
+        const limit = parseInt(req.params.limit, 10) || 100;
+        const result = [];
+        for (let i = 1; i <= limit; i++) {
+            const tri = i * (i + 1) / 2;
+            const sqrt = Math.sqrt(tri);
+            const isSquare = sqrt == parseInt(sqrt, 10);
+            if (isSquare) {
+                result.push({ n: i, tri, sqrt });
+            }
+        }
+        res.json({ description: `Triangular squares`, data: result });
+    },
+
+    hexagons: (req, res) => {
+        const limit = parseInt(req.params.limit, 10) || 100;
+        const result = [];
+        for (let i = 1; i <= limit; i++) {
+            const hexagon = i * (i + 1) * 3 + 1;
+            const factors = mathUtils.factors(hexagon);
+            result.push({ n: i, hexagon, factors });
+        }
+        res.json({ description: `Hexagon numbers`, data: result });
     }
 
 };

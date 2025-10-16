@@ -25,7 +25,17 @@ const mathUtils = {
             results.push(Math.pow(phi, i));
         }
         return results;
+    },
+
+    factors: (n) => {
+        const factors = [];
+        for (const p of primes) {
+            if (p > n / 2) break; // no factor can exceed n/2 (except n itself)
+            if (n % p === 0) factors.push(p);
+        }
+        return factors;
     }
+
 };
 
 module.exports = mathUtils;

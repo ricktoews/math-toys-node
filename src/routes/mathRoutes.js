@@ -11,5 +11,8 @@ router.get('/fib/:howmany', mathController.fibonacci);
 router.get('/nthfib/:nth', mathController.nthFibonacci);
 router.get('/calendar/:year', mathController.calendar);
 router.get('/century/:cent', mathController.century);
+router.get('/triangular/:limit', mathController.triangular);
+router.get('/trisquare/:limit', mathController.triSquare);
+router.get('/hexagons/:limit', mathController.hexagons);
 
 module.exports = router;

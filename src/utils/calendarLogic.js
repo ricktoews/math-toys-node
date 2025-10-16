@@ -44,9 +44,9 @@ const calc12DigitYear = year => {
 }
 
 const century = c => {
-    let year = (c - 1) * 100;
+    let year = (c - 1) * 100 + 1;
     let calendars = {};
-    while (year < c * 100) {
+    while (year <= c * 100) {
         calendars[year.toString()] = calc12DigitYear(year++).join('');
     }
     return calendars;
