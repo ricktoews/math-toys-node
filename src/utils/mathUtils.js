@@ -33,6 +33,9 @@ const mathUtils = {
             if (p > n / 2) break; // no factor can exceed n/2 (except n itself)
             if (n % p === 0) factors.push(p);
         }
+        if (n / 2 > primes[primes.length - 1]) {
+            factors.push('factors may not be complete');
+        }
         return factors;
     }
 
