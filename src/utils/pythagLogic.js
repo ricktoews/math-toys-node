@@ -18,6 +18,8 @@ function isRelativePrime(a, b) {
 // Convert get_pythag_by_corner from Python
 function getPythagByCorner(paramCorner) {
     const corner = parseInt(paramCorner, 10);
+    if (corner < 1) return [];
+
     const squares = [];
     let i = 1;
     let circuitBreaker = 50;
